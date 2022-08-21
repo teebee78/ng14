@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+  > nav {
+    margin-bottom: 20px;
+    background-color: #555555;
+    padding: 20px;
+
+    > a {
+      color: white;
+    };
+  }
+}
