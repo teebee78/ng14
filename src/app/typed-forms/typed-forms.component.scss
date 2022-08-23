@@ -1,0 +1,27 @@
+:host {
+  > form {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: min-content min-content;
+    grid-gap: 5px;
+    align-items: center;
+    
+    > #submitButton {
+      grid-column: 2 / 3;
+      justify-self: end;
+    }
+
+    >input, button {
+      padding: 5px;
+      border: 1px solid #555555;
+      border-radius: 3px;
+      background-color: white;
+    }
+
+    > button:hover:not([disabled]) {
+      background-color: #555555;
+      color: white;
+      font-weight: bold;
+    }
+  }
+}
