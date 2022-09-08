@@ -1,0 +1,18 @@
+:host {
+  display: grid;
+  align-items: center;
+  grid-template-rows: 1fr;
+  height: 100%;
+  padding: 20px;
+  
+  > .slider {
+    outline: none;
+    background: darkgray;
+    appearance: none;
+    border-radius: 5px;
+  }
+
+  >.slider:hover {
+    background: lightgrey;
+  }
+}
