@@ -1,0 +1,5 @@
+<button (click)="openDialog()" *ngIf="!this.dialogRef">Open Dialog</button>
+
+<ng-template #dialogContent>
+  <button (click)="closeDialog()" *ngIf="this.dialogRef">Close Dialog</button>
+</ng-template>

@@ -7,20 +7,25 @@ import { AppComponent } from './app.component';
 import { TypedFormsComponent } from './typed-forms/typed-forms.component';
 import { CvaExampleComponent } from './cva-example/cva-example.component';
 import { SliderComponent } from './slider/slider.component';
+import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+import { Dialog, DialogModule, DIALOG_SCROLL_STRATEGY } from '@angular/cdk/dialog';
+import { Overlay, OverlayModule } from '@angular/cdk/overlay';
 
 @NgModule({
   declarations: [
     AppComponent,
     TypedFormsComponent,
     CvaExampleComponent,
-    SliderComponent
+    SliderComponent,
+    DialogExampleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule, 
+    DialogModule, 
   ],
-  providers: [],
+  providers: [Dialog, Overlay],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
