@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CvaExampleComponent } from './cva-example/cva-example.component';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
+import { OverlayExampleComponent } from './overlay-example/overlay-example.component';
 import { TypedFormsComponent } from './typed-forms/typed-forms.component';
 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
   { 
     path: 'dialog', 
     component: DialogExampleComponent
+  }, 
+  {
+    path: 'overlay', 
+    component: OverlayExampleComponent
   }
 ];
 

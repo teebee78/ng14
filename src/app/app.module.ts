@@ -8,9 +8,12 @@ import { TypedFormsComponent } from './typed-forms/typed-forms.component';
 import { CvaExampleComponent } from './cva-example/cva-example.component';
 import { SliderComponent } from './slider/slider.component';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
-import { Dialog, DialogModule, DIALOG_SCROLL_STRATEGY } from '@angular/cdk/dialog';
-import { Overlay, OverlayModule } from '@angular/cdk/overlay';
+import { DialogModule } from '@angular/cdk/dialog';
+import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogContentComponent } from './dialog-content/dialog-content.component';
+import { OverlayExampleComponent } from './overlay-example/overlay-example.component';
+import { ToverlayDirective } from './toverlay.directive';
+import { OverlayComponent } from './overlay/overlay.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +22,19 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
     CvaExampleComponent,
     SliderComponent,
     DialogExampleComponent,
-    DialogContentComponent
+    DialogContentComponent,
+    OverlayExampleComponent,
+    ToverlayDirective,
+    OverlayComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     ReactiveFormsModule, 
     DialogModule, 
+		OverlayModule
   ],
-  providers: [Dialog, Overlay],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
