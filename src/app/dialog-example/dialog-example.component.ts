@@ -13,7 +13,9 @@ export class DialogExampleComponent implements OnInit {
 
   @ViewChild('dialogContent') dialogContent!: TemplateRef<any>;
 
-  @ViewChild('innerDialogContent') innerDialogContent!: TemplateRef<any>
+  @ViewChild('innerDialogContent') innerDialogContent!: TemplateRef<any>;
+
+  yesOrNoAnswer: string | undefined;
 
   constructor(public dialog: Dialog) { }
 
@@ -40,8 +42,8 @@ export class DialogExampleComponent implements OnInit {
   }
 
   openQuestionDialog() {
-
-    const dialogRef = this.dialog.open(DialogContentComponent, {
+    this.yesOrNoAnswer = undefined;
+    const dialogRef = this.dialog.open<string>(DialogContentComponent, {
       width: '250px',
       height: '200px', 
       data: {
@@ -50,6 +52,6 @@ export class DialogExampleComponent implements OnInit {
       }
     });
     dialogRef?.closed.subscribe(result => 
-      console.log('>>>>> closed with ' + result));
+      this.yesOrNoAnswer = result);
   }
 }
