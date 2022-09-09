@@ -10,6 +10,7 @@ import { SliderComponent } from './slider/slider.component';
 import { DialogExampleComponent } from './dialog-example/dialog-example.component';
 import { Dialog, DialogModule, DIALOG_SCROLL_STRATEGY } from '@angular/cdk/dialog';
 import { Overlay, OverlayModule } from '@angular/cdk/overlay';
+import { DialogContentComponent } from './dialog-content/dialog-content.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { Overlay, OverlayModule } from '@angular/cdk/overlay';
     TypedFormsComponent,
     CvaExampleComponent,
     SliderComponent,
-    DialogExampleComponent
+    DialogExampleComponent,
+    DialogContentComponent
   ],
   imports: [
     BrowserModule,

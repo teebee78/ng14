@@ -1,0 +1,14 @@
+
+<ng-container *ngIf="!data.template">
+  {{data.message}}
+</ng-container>
+
+<ng-container *ngTemplateOutlet="data.template">
+
+</ng-container>
+
+<div class="separator"></div>
+<div class="buttons">
+  <button (click)="onYesClick()">Yes</button>
+  <button (click)="onNoClick()">No</button>
+</div>

@@ -1,5 +1,12 @@
 <button (click)="openDialog()" *ngIf="!this.dialogRef">Open Dialog</button>
+<button (click)="openQuestionDialog()">Open Yes or No</button>
 
 <ng-template #dialogContent>
   <button (click)="closeDialog()" *ngIf="this.dialogRef">Close Dialog</button>
+</ng-template>
+
+<ng-template #innerDialogContent>
+  <span>  
+    Hello world this is <span class="highlight">the</span> inner's dialog content. What would you like to do? 
+  </span>
 </ng-template>

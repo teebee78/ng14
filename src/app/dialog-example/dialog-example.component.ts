@@ -1,6 +1,8 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import {Dialog, DialogRef} from '@angular/cdk/dialog';
 import { throwIfEmpty } from 'rxjs';
+import { DialogContentComponent } from '../dialog-content/dialog-content.component';
+import { ResourceLoader } from '@angular/compiler';
 
 @Component({
   selector: 'app-dialog-example',
@@ -10,6 +12,8 @@ import { throwIfEmpty } from 'rxjs';
 export class DialogExampleComponent implements OnInit {
 
   @ViewChild('dialogContent') dialogContent!: TemplateRef<any>;
+
+  @ViewChild('innerDialogContent') innerDialogContent!: TemplateRef<any>
 
   constructor(public dialog: Dialog) { }
 
@@ -33,5 +37,19 @@ export class DialogExampleComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef?.close();
+  }
+
+  openQuestionDialog() {
+
+    const dialogRef = this.dialog.open(DialogContentComponent, {
+      width: '250px',
+      height: '200px', 
+      data: {
+        message: 'hello world this is the dialog data', 
+        template: this.innerDialogContent,
+      }
+    });
+    dialogRef?.closed.subscribe(result => 
+      console.log('>>>>> closed with ' + result));
   }
 }
