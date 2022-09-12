@@ -12,5 +12,4 @@ export class OverlayComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

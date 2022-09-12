@@ -14,6 +14,7 @@ import { DialogContentComponent } from './dialog-content/dialog-content.componen
 import { OverlayExampleComponent } from './overlay-example/overlay-example.component';
 import { ToverlayDirective } from './toverlay.directive';
 import { OverlayComponent } from './overlay/overlay.component';
+import { ToastMessageComponent } from './toast-message/toast-message.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { OverlayComponent } from './overlay/overlay.component';
     DialogContentComponent,
     OverlayExampleComponent,
     ToverlayDirective,
-    OverlayComponent
+    OverlayComponent,
+    ToastMessageComponent
   ],
   imports: [
     BrowserModule,

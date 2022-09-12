@@ -1,6 +1,8 @@
 import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { TemplatePortal } from '@angular/cdk/portal';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { delay, EMPTY, noop, of } from 'rxjs';
+import { ToastMessageComponent } from '../toast-message/toast-message.component';
 
 @Component({
   selector: 'app-overlay-example',
@@ -10,6 +12,7 @@ import { Component, ElementRef, OnInit, TemplateRef, ViewChild, ViewContainerRef
 export class OverlayExampleComponent implements OnInit {
 
   private overlayRef: OverlayRef | undefined;
+  private lastToasOverlayRef: OverlayRef | undefined;
 
   @ViewChild('overlayContent')
   public overlayContent!: TemplateRef<any>
@@ -44,6 +47,36 @@ export class OverlayExampleComponent implements OnInit {
         }])
     });
     const viewRef = this.overlayRef.attach(new TemplatePortal(this.overlayContent, this.viewContainerRef))
+  }
+
+  showMessage() {
+    const overlayRef = this.overlay.create({
+      positionStrategy: this.overlay.position()
+        .global()
+        .top('100px')
+        .right('50px'),
+    });
+    const viewRef = overlayRef.attach(new TemplatePortal(this.overlayContent, this.viewContainerRef));
+    of(EMPTY).pipe(delay(1500)).subscribe({ complete: () => overlayRef.dispose() });
+  }
+
+  showToastMessage() {
+    const toastOverlayRef = this.overlay.create({
+      positionStrategy: this.overlay.position()
+        .global()
+        .right()
+        .top((this.lastToasOverlayRef?.overlayElement?.getBoundingClientRect()?.bottom ?? 0) + 'px'),
+      panelClass: 'toast-panel',
+    });
+    this.lastToasOverlayRef = toastOverlayRef;
+    toastOverlayRef.attach(new ComponentPortal(ToastMessageComponent));
+    of(EMPTY)
+      .pipe(delay(10_000))
+      .subscribe({
+        complete: () => {
+          toastOverlayRef?.dispose();
+        }
+      });
   }
 
   onHoverOut() {
