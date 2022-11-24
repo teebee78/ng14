@@ -1,0 +1,33 @@
+:host {
+  position: unset;
+  border: 2px solid darkgray;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 0 5px darkgray;
+  outline: none;
+
+  padding: 10px;
+  margin: 10px;
+
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  &.error {
+    border-color: darkred;
+    background-color: red;
+    box-shadow: 0 0 5px darkred;
+  }
+
+  &.success {
+    border-color: darkgreen;
+    background-color: lightgreen;
+    box-shadow: 0 0 5px darkgreen;
+  }
+
+  &.warning {
+    border-color: darkorange;
+    background-color: orange;
+    box-shadow: 0 0 5px darkorange;
+  }
+}

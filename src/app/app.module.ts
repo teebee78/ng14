@@ -15,6 +15,8 @@ import { OverlayExampleComponent } from './overlay-example/overlay-example.compo
 import { ToverlayDirective } from './toverlay.directive';
 import { OverlayComponent } from './overlay/overlay.component';
 import { ToastMessageComponent } from './toast-message/toast-message.component';
+import { ToastDemoComponent } from './toast-demo/toast-demo.component';
+import { ToastModule } from './toast/toast.module';
 
 @NgModule({
   declarations: [
@@ -27,14 +29,16 @@ import { ToastMessageComponent } from './toast-message/toast-message.component';
     OverlayExampleComponent,
     ToverlayDirective,
     OverlayComponent,
-    ToastMessageComponent
+    ToastMessageComponent,
+    ToastDemoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     ReactiveFormsModule, 
     DialogModule, 
-		OverlayModule
+		OverlayModule, 
+    ToastModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

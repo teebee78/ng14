@@ -1,0 +1,14 @@
+:host {
+  position: fixed;
+  z-index: 9999;
+
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  
+  &.empty {
+    display: none;
+  }
+}

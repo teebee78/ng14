@@ -1,0 +1,4 @@
+<button (click)="showToast()">Show Info</button>
+<button (click)="showToast('WARN')" [ngStyle]="{'background-color': 'orange'}">Show Warning</button>
+<button (click)="showToast('ERROR')"  [ngStyle]="{'background-color': 'red'}">Show Error</button>
+<button (click)="showToast('SUCCESS')"  [ngStyle]="{'background-color': 'green'}">Show Success</button>

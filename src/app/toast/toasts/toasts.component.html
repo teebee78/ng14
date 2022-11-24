@@ -1,0 +1,3 @@
+<ng-container *ngFor="let toast of toastService.toasts$ | async">
+  <app-toast [toast]="toast"></app-toast>
+</ng-container>
