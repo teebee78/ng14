@@ -17,6 +17,8 @@ import { OverlayComponent } from './overlay/overlay.component';
 import { ToastMessageComponent } from './toast-message/toast-message.component';
 import { ToastDemoComponent } from './toast-demo/toast-demo.component';
 import { ToastModule } from './toast/toast.module';
+import { SplitButtonDemoComponent } from './split-button-demo/split-button-demo.component';
+import { SplitButtonModule } from './split-button/split-button.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { ToastModule } from './toast/toast.module';
     OverlayComponent,
     ToastMessageComponent,
     ToastDemoComponent,
+    SplitButtonDemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { ToastModule } from './toast/toast.module';
     DialogModule, 
 		OverlayModule, 
     ToastModule, 
+    SplitButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
