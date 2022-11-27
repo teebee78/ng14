@@ -42,7 +42,8 @@ import { SplitButtonModule } from './split-button/split-button.module';
     DialogModule, 
 		OverlayModule, 
     ToastModule, 
-    SplitButtonModule
+    OverlayModule,
+    SplitButtonModule, 
   ],
   providers: [],
   bootstrap: [AppComponent]

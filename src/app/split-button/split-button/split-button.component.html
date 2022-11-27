@@ -1,1 +1,18 @@
-<p>split-button works!</p>
+<div #origin cdkOverlayOrigin>
+    <ng-container *ngTemplateOutlet="defaultAction.template"></ng-container>
+    <!-- <div (click)="onPrimaryAction()">Primary Action</div> -->
+    <span (click)="isExpanded = !isExpanded" class="material-symbols-outlined">
+        {{isExpanded ? "expand_less" : "expand_more"}}
+    </span>
+</div>
+
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="origin" [cdkConnectedOverlayOpen]="isExpanded"
+    cdkConnectedOverlayPanelClass="split-button-overlay-panel" [cdkConnectedOverlayMinWidth]="origin.offsetWidth">
+
+    <ng-container *ngFor="let action of actions">
+        <div (click)="onActionClick()">
+            <ng-container *ngTemplateOutlet="action.template"></ng-container>
+        </div>
+    </ng-container>
+    
+</ng-template>

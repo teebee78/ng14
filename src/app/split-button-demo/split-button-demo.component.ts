@@ -12,4 +12,11 @@ export class SplitButtonDemoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public onPrimrayAction() {
+    console.log('hello world');
+  }
+
+  public onAction(message: string) {
+    console.log(`action ${message} clicked`)
+  }
 }

@@ -1,3 +1,19 @@
 <app-split-button>
 
+    <ng-template splitButtonDefaultAction>
+        <button (click)="onPrimrayAction()">Say Hello</button>
+    </ng-template>
+
+    <ng-template splitButtonAction>
+        <button (click)="onAction('1')">Say 1</button>
+    </ng-template>
+
+    <ng-template splitButtonAction>
+        <button (click)="onAction('2')">Say 2</button>
+    </ng-template>
+
+    <ng-template splitButtonAction>
+        <button (click)="onAction('3')">Say 3</button>
+    </ng-template>
+
 </app-split-button>

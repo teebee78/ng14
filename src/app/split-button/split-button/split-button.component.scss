@@ -1,0 +1,34 @@
+:host {
+
+    div {
+        display: inline-flex;
+        border: 1px solid #777777;
+        padding: 2px;
+
+        ::ng-deep button {
+            border: 0;
+            background-color: white;
+        }
+    }
+}
+
+// global style so it's available in the overlay
+::ng-deep .split-button-overlay-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+
+    align-items: stretch;
+
+    div {
+        button {
+            border: 0;
+            width: 100%;
+            background-color: white;
+            text-align: left;
+        }
+    }
+}
