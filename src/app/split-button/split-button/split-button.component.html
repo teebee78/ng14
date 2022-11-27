@@ -1,4 +1,4 @@
-<div #origin cdkOverlayOrigin [ngClass]="type">
+<div #origin cdkOverlayOrigin [ngClass]="[type + (disabled ? ' disabled' : '')]">
     <ng-container *ngTemplateOutlet="defaultAction.template"></ng-container>
     <!-- <div (click)="onPrimaryAction()">Primary Action</div> -->
     <span (click)="isExpanded = !isExpanded" class="material-symbols-outlined">
