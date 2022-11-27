@@ -1,13 +1,24 @@
+$primary: red;
+$padding: 5px;
+
 :host {
 
     div {
         display: inline-flex;
         border: 1px solid #777777;
-        padding: 2px;
+        padding: $padding;
+        background-color: white;
 
         ::ng-deep button {
             border: 0;
-            background-color: white;
+            background-color: inherit;
+            color: inherit;
+        }
+
+        &.primary {
+            background-color: $primary;
+            border-color: $primary;
+            color: white;
         }
     }
 }
@@ -16,7 +27,7 @@
 ::ng-deep .split-button-overlay-panel {
     display: flex;
     flex-direction: column;
-    padding: 2px;
+    padding: $padding;
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
@@ -29,6 +40,17 @@
             width: 100%;
             background-color: white;
             text-align: left;
+            color: inherit;
+        }
+    }
+
+    &.primary {
+        color: $primary;
+
+        button:hover {
+            // border-color: $primary;
+            // border-left:2px solid $primary;
+            text-decoration: underline;
         }
     }
 }

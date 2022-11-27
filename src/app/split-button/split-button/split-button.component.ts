@@ -1,4 +1,4 @@
-import { ContentChild } from '@angular/core';
+import { ContentChild, Input } from '@angular/core';
 import { ContentChildren } from '@angular/core';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { AfterContentInit } from '@angular/core';
@@ -14,6 +14,9 @@ import { SplitButtonDefaultActionDirective } from '../split-button-default-actio
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SplitButtonComponent implements OnInit, AfterContentInit {
+
+  @Input()
+  public type: 'primary' | '' = '';
 
   public isExpanded = false;
 

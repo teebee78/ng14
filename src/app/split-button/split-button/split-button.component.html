@@ -1,4 +1,4 @@
-<div #origin cdkOverlayOrigin>
+<div #origin cdkOverlayOrigin [ngClass]="type">
     <ng-container *ngTemplateOutlet="defaultAction.template"></ng-container>
     <!-- <div (click)="onPrimaryAction()">Primary Action</div> -->
     <span (click)="isExpanded = !isExpanded" class="material-symbols-outlined">
@@ -7,12 +7,12 @@
 </div>
 
 <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="origin" [cdkConnectedOverlayOpen]="isExpanded"
-    cdkConnectedOverlayPanelClass="split-button-overlay-panel" [cdkConnectedOverlayMinWidth]="origin.offsetWidth">
+    [cdkConnectedOverlayPanelClass]="['split-button-overlay-panel', type]" [cdkConnectedOverlayMinWidth]="origin.offsetWidth">
 
     <ng-container *ngFor="let action of actions">
         <div (click)="onActionClick()">
             <ng-container *ngTemplateOutlet="action.template"></ng-container>
         </div>
     </ng-container>
-    
+
 </ng-template>
