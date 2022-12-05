@@ -1,0 +1,14 @@
+<p>standalone-demo works!</p>
+<p>
+The new standalone API makes it possible to write angular components, directives and pipes without creating or modifying an associated ng module. 
+</p>
+<p>
+Stanalone components explicitly manage their own dependencies.
+</p>
+<p>
+simplyfied lazy loading: fine grained lazy loading and code splitting on a component level
+ path: '', loadComponent: () => import(.'component').then(m => m.Component)
+</p>
+<app-standalone>
+
+</app-standalone>

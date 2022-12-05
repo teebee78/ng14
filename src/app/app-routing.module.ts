@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'split-button', 
     component: SplitButtonDemoComponent
+  }, 
+  {
+    path: 'standalone', 
+    loadChildren: () => import('./standalone/standalone.module').then(m => m.StandaloneModule)
   }
 ];
 
