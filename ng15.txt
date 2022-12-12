@@ -1,0 +1,134 @@
+Angular 15 Launch Event
+
+- help deliver web aps with conficence
+- angular is here with best practices and strong defaults
+- better stack traces
+
+
+Standalone API
+===============================================================
+- possible to  build an app without the use of ng modules 
+- provideHttpClient() as a replacement for the HTTP client module, 
+- provideRouter as a replacement for RouterModule.forRoot and .forChild
+
+Directive Composition
+===============================================================
+- a way to reuse behaviors fom directives without those directives showing up in the public API of ther components
+- Apply the pulled in directives to the host element of these components. 
+
+@Component({
+  selector: 'qx-menu', 
+
+  hostDirectives: [CdkMenu],
+  })
+export class QxMenu {}
+
+@Component({
+  selector: 'qx-menuitem', 
+  hostDirectives: [CdkMenuItem], 
+  inputs: ['cdkMenuItemDisabled: disabled'], // expose a disabled input as part of the menu item's API
+})
+export class QxMenuItem
+
+
+@Directive({
+  selector: 'button[qxMenuTrigger]', 
+  hostDirectives: [{
+    directive: CdkMenuTrigger, 
+    inputs: ['cdkMenuTriggerFor: panel'],
+  }]
+})
+export class QxMenuTrigger {} 
+ 
+
+<button qxMenuTrigger [panel]="popup">Open menu</button>
+<ng-template #popup>
+  <qx-menu>
+    <qx-menuitem>Order history</qx-menuitem>
+    <qx-menuitem>Account Settings</qx-menuitem>
+    <qx-menuitem disabled >Logout</qx-menuitem>
+  </qx-menu>
+</ng-template>
+
+no sign of anything cdk-related in the API. In the DOM, the cdk directives have applied a number of css classes and attriutes
+
+Image Directive
+===============================================================
+- image directive is now stable, part of the common module
+- <im ngSrc="" width="" height=""
+- lazy loads non-critical images by default, only eagerly loads images specially marked as priority
+- suggest adding preconnect tags to speed up image loading, and more
+- Also: Automatic generation of srcset, so that you can download appropriately sized images
+- Experimental: fillmode, when width and height cannot be defined, atomatically styles the image to fill its containing element
+
+Angular Material and CDK
+===============================================================
+- MDC: MAtrial Design Components 
+- ng update @angular/material --next
+- ng generate @angular/material:mdc-migation
+- cdk ListBox: Custom Listbox Interactions based on the WAI-AIRA listbox pattern
+
+More Updates
+===============================================================
+-  angular.json: "builder": "@angular-devkit/build-angular:browser-esbuild" // now esbuild
+-  ng g component --standalone 
+-  Files removed by defalut: 
+    - test.ts, 
+    - polyfill.ts, // can now be specified in the polyfill section of angular.json 
+    - environments
+    - karma configuration
+    
+    
+Typed Forms
+===============================================================
+- In general, every form corresponds to a schema, or the shape of the data you want to collect. 
+- its never necessary to explicitly delcare your schema, but it's always useful to think acout when you're working with a complex form
+- When you update to Angular13, your forms will be automatically opted out of the new types. Then, when you're ready, you can turn them on one control at a time and incrementally migrate. 
+- When working with typed forms, it's  important to know the difference between the types of values versus the types of controls 
+  - address.value: {street: string} // shape of the data
+  - address.controls: {street: FormControl<string>}
+  - You rarely need to specify an eplicit type, if you do, you should always use the control type. 
+  - When working with a form control, you can call reset at any time => The controls value will immediately reset to null => you cannot always assume, the value of a control is a string. 
+     const dog = new FormControl('spot'); // type: string | null
+     dog.value.substring(1) => will not compile 
+     
+     const dog = new FormContrl('spot', {nonNullable: true});  // type: string
+     => instead of reseeting to null, the control will reset to its initial value. 
+  - Disabled controls: Disabled controls are not included in the form's value. 
+    => when you call .value, any key in the form group might have been disabled. 
+    => The type knows that each key is optional. 
+    => When you use this value, the type system enforces you handle the possibility that each key might be undefined. 
+    const cat = new FormGroup({          // FormGroup<{
+      name: new FormControl('bob'),      //   name?: new FormControl('bob'), 
+      lives: new FormControl(9)          //   lives?: new FormControl(9)
+      })                                 // }>;
+      
+      
+
+
+
+type Party = {
+  address: {
+    number: number ,
+    street: string, 
+  },
+  formal: boolean, 
+  foodOptions: Array<{
+    food: strin, 
+    price: number,
+  }>
+  
+ - By contrast, we do explicitly declare the form model
+const partyForm = new FormGroup({
+  address: new FormGroup({
+    number: new FormControl(1234), 
+    street: new FormControl('Powell St')
+  }), 
+  format: new FormControl(false),
+  foodOptions: new FormArray([])
+});
+
+const place = partyForm.get('address.number')!.value; 
+const firstLetter = place.substring(1); // bug!
+
+
